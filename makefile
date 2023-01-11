@@ -5,7 +5,7 @@ bin = bin
 app = app
 out = $(bin)/$(app) 
 libs = -ltermDisplay -lpthread
-flags = -std=c++14
+flags = -std=c++17 -O3
 
 make: build run
 

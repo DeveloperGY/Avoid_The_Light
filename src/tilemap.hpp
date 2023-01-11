@@ -7,13 +7,13 @@
 #include <iostream>
 #include <array>
 
-class Walls: public GameObject
+class TileMap: public GameObject
 {
     private:
         std::array<std::array<int, 120>, 30> arr;
 
     public:
-        Walls();
+        TileMap();
 
         void update();
         void draw();

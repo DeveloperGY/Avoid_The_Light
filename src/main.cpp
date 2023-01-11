@@ -1,6 +1,8 @@
 #include <termDisplay.h>
 #include "atl_types.hpp"
-#include "gameObj.hpp"
+#include "gameInc.hpp"
+
+#include <iostream>
 
 int main(void)
 {
@@ -9,7 +11,8 @@ int main(void)
 
     td_initialize(width, height);
 
-    GameObject *walls = new Walls();
+    GameObject *tilemap = new TileMap();
+    GameObject *player = new Player(5, 16);
 
 
 
@@ -20,17 +23,23 @@ int main(void)
     while (running)
     {
         // update
-        walls->update();
+        tilemap->update();
+        player->update();
 
         //draw
-        walls->draw();
-        td_drawPoint(5, 15, '@', TD_COLOR_BLUE, TD_COLOR_DEFAULT);
+        tilemap->draw();
+
+
+        
+        player->draw();
         td_display();
     }
 
-    delete walls;
+    delete tilemap;
 
     td_terminate();
+
+    std::cout << "\x1b[0;0H\x1b[0J" << std::endl;
 
     return 0;
 }
