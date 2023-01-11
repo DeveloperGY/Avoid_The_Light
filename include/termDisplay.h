@@ -7,6 +7,7 @@
 #include <string.h>
 
 #include <termios.h>
+#include <sys/select.h>
 
 /**
  * @brief Width of the buffers
@@ -243,10 +244,12 @@ extern "C" {
  * @brief An unbuffered character input function to remove the need
  *        to press enter to input a character
  *
+ * @param max_wait_time the amount of time in milliseconds to wait for input, use zero if you dont want to wait
+ * 
  * @warning Linux only!!!
- *  
+ * @return returns the pressed character, or NULL if there is no pressed character or there is an error
 */
-char getch();
+char getch(unsigned int max_wait_time);
 
 #ifdef __cplusplus
 }
